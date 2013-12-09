@@ -7,7 +7,7 @@ textSize(50);
     if (catcher.catchDrop(r[i]) == true) {
       r[i].goAway();
       score++;
-      threshold-=50;
+      threshold-=40;
     }
   }
   catcher.display();
