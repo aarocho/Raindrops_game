@@ -1,5 +1,28 @@
-textSize(50);
+Raindrop[] r = new Raindrop[550];
+Catcher catcher;
+int index = 1;
+int oldTime = 0;
+int threshold = 3000;
+int score;
+PImage dew;
+PImage startScreen;
+
+void setup() {
+  dew = loadImage("Rain.jpg");
+  startScreen = loadImage("October-05-2012-01-52-46-jkl.jpg");
+  size(dew.width, dew.height);
+  for (int i = 0; i < r.length; i++) {
+    r[i] = new Raindrop();
+  } 
+  catcher = new Catcher();
+}
+
+void draw() {
+
+  background(dew);
+  textSize(50);
   fill(10);
+  text("Score:", 10, 50);
   text(score, 10, 100);
   for (int i = 0; i < index; i++) {
     r[i].display();
@@ -7,17 +30,17 @@ textSize(50);
     if (catcher.catchDrop(r[i]) == true) {
       r[i].goAway();
       score++;
-      threshold-=40;
+      threshold-=50;
     }
   }
   catcher.display();
   catcher.update();
   if (millis() - oldTime > threshold) {
-    if (index < r.length) {
-      index++;
-      oldTime = millis();
-    }
-  }
-  //if(index > r.length) {
-    
-}
+   if (index < r.length) {
+   index++;
+   oldTime = millis();
+   }
+   }
+   /*if (index > r.length) {
+   }*/
+}    
